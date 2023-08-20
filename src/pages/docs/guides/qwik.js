@@ -7,15 +7,14 @@ let steps = [
     title: 'Create your project',
     body: () => (
       <p>
-        Start by creating a new Next.js project if you don’t have one set up already. The most
-        common approach is to use{' '}
-        <a href="https://nextjs.org/docs/api-reference/create-next-app">Create Next App</a>.
+        Start by creating a new Qwik project if you don't have one set up already. The most common
+        approach is to use <a href="https://qwik.builder.io/docs/getting-started/">Create Qwik</a>.
       </p>
     ),
     code: {
       name: 'Terminal',
       lang: 'terminal',
-      code: 'npx create-next-app@latest my-project --typescript --eslint\ncd my-project',
+      code: 'npm create qwik@latest my-project\ncd my-project',
     },
   },
   {
@@ -44,14 +43,7 @@ let steps = [
       lang: 'js',
       code: `  /** @type {import('tailwindcss').Config} */
   module.exports = {
->   content: [
->     "./app/**/*.{js,ts,jsx,tsx,mdx}",
->     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
->     "./components/**/*.{js,ts,jsx,tsx,mdx}",
->
->     // Or if using \`src\` directory:
->     "./src/**/*.{js,ts,jsx,tsx,mdx}",
->   ],
+>   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
     theme: {
       extend: {},
     },
@@ -64,11 +56,11 @@ let steps = [
     body: () => (
       <p>
         Add the <code>@tailwind</code> directives for each of Tailwind’s layers to your{' '}
-        <code>globals.css</code> file.
+        <code>./src/global.css</code> file.
       </p>
     ),
     code: {
-      name: 'globals.css',
+      name: 'global.css',
       lang: 'css',
       code: '@tailwind base;\n@tailwind components;\n@tailwind utilities;',
     },
@@ -91,23 +83,25 @@ let steps = [
     body: () => <p>Start using Tailwind’s utility classes to style your content.</p>,
     code: {
       name: 'index.tsx',
-      lang: 'jsx',
-      code: `  export default function Home() {
+      lang: 'tsx',
+      code: `  import { component$ } from '@builder.io/qwik'
+
+  export default component$(() => {
     return (
->     <h1 className="text-3xl font-bold underline">
->       Hello world!
+>     <h1 class="text-3xl font-bold underline">
+>       Hello World!
 >     </h1>
     )
-  }`,
+  })`,
     },
   },
 ]
 
-export default function UsingNextJs({ code }) {
+export default function UsingQwik({ code }) {
   return (
     <FrameworkGuideLayout
-      title="Install Tailwind CSS with Next.js"
-      description="Setting up Tailwind CSS in a Next.js project."
+      title="Install Tailwind CSS with Qwik"
+      description="Setting up Tailwind CSS in a Qwik project."
     >
       <Steps steps={steps} code={code} />
     </FrameworkGuideLayout>
@@ -124,11 +118,11 @@ export function getStaticProps() {
   }
 }
 
-UsingNextJs.layoutProps = {
+UsingQwik.layoutProps = {
   meta: {
-    title: 'Install Tailwind CSS with Next.js',
-    description: 'Setting up Tailwind CSS in a Next.js v10+ project.',
-    section: 'Installation',
+    title: 'Install Tailwind CSS with Qwik',
+    description: 'Setting up Tailwind CSS in an Qwik project.',
+    section: 'Getting Started',
   },
   Layout: DocumentationLayout,
   allowOverflow: false,

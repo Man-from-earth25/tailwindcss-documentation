@@ -18,7 +18,7 @@ let steps = [
     code: {
       name: 'Terminal',
       lang: 'terminal',
-      code: 'npm init svelte@latest my-app\ncd my-app',
+      code: 'npm init svelte@latest my-project\ncd my-project',
     },
   },
   {
@@ -35,7 +35,7 @@ let steps = [
       code: 'npm install -D tailwindcss postcss autoprefixer\nnpx tailwindcss init -p',
     },
   },
-    {
+  {
     title: 'Enable use of PostCSS in <style> blocks',
     body: () => (
       <p>
@@ -57,7 +57,7 @@ let steps = [
   };
   export default config;`,
     },
-  },  
+  },
   {
     title: 'Configure your template paths',
     body: () => (
